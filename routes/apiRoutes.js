@@ -1,68 +1,78 @@
 // API routes
-const fs = require('fs');
-var notes;
+const fs = require("fs");
+
+// NPM package "uuid" to assign unique ids.
+const { v4: uuidv4 } = require('uuid');
 
 // ROUTING
-
 module.exports = (app) => {
-  // API GET Requests
-  // GET Requests will receive a new note to the JSON File
-  // ---------------------------------------------------------------------------
 
-    app.get('/api/notes', (req, res) => {
-        fs.readFile("db/db.json", "utf8", (err, data) => {
-            if (err) throw err;
-            notes = JSON.parse(data);
-            res.json(notes);
-        });
+    // API GET Requests
+    // GET Requests will receive a new note to the JSON File
+    // ---------------------------------------------------------------------------
+    app.get("/api/notes", (req, res) => {
+        
+        console.log("Getting Notes Started")
+
+        // Assigns variable to read the data from the "./db/db.json" file.
+        let note = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+        
+        console.log("Returning Notes Data");
+        
+        res.json(note);
     });
 
-  // API POST Requests
-  // Post Requests will post new notes to the JSON File
-  // ---------------------------------------------------------------------------
 
-    app.post('/api/notes', (req, res) => {
-        fs.readFile("db/db.json", "utf8", (err, data) => {
-            if (err) throw err;
-            let notes = JSON.parse(data)
-            let newNotes = req.body;
-            let noteId = 0;
-            if (notes.length !== 0){
-                noteId = notes[notes.lenghts - 1]["id"];
-            }
-            let newNoteId = noteId + 1;
-            newNotes["id"] = newNoteId;
-            notes.push(newNotes);
-            fs.writeFileSync("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
-                if (err) throw err;
-            });
-            res.json(newNotes);
-        });
-    });   
+    // API POST Requests
+    // Post Requests will post new notes to the JSON File
+    // ---------------------------------------------------------------------------
+    app.post("/api/notes", (req, res) => {
+
+        // Extracted new note from request body.  
+        const newNote = req.body;
+        
+        console.log("Saving new note" + JSON.stringify(newNote));
+
+        // Assigns a unique id obtained from 'uuid' package.
+        newNote.id = uuidv4();
+
+        // Assigns variable to read the data from the "./db/db.json" file
+        let note = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+        
+        // Adds a new note to the "./db/db.json"" file.
+        note.push(newNote);
+
+        // Writes new note data to "./db/db.json" file.
+        fs.writeFileSync('./db/db.json', JSON.stringify(note));
+        
+        console.log("New note successfully added!");
+
+        res.json(note);
+    });
+
 
     // API DELETE
     // Delete Request will clear out the notes from the JSON File
     // ---------------------------------------------------------------------------
 
-    app.delete('/api/notes/:id', (req, res) => {
-        fs.readFile("db/db.json", "utf8", (err, data) => {
-            if (err) throw err;
+    app.delete("/api/notes/:id", (req, res) => {
 
-            let notes = JSON.parse(data);
+        // Checks unique id that needs to be deleted.
+        let noteId = req.params.id.toString();
+        
+        console.log("Deleting note for id " + JSON.stringify(noteId));
 
-            let chosenId = parseInt(req.params.id);
-            for (let i = 0; i < notes.length; i++) {
-                if (chosenId === notes[i].id) {
-                    notes.splice(i, 1);
-                    let noteJSON = JSON.stringify(notes, null, 2);
+        // Assigns variable to read the data from the 'db.json' file.
+        let note = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
-            fs.writeFileSync("db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
-                if (err) throw err;
-                console.log("Note has been deleted");
-            });
-            }
-        }
-        res.json(notes);
-        });
+        // Checks data to make sure the wrong note is not being deleted.
+        const noteCheck = note.filter( note => note.id.toString() !== noteId );
+
+        // Writes new note data to "./db/db.json" file.
+        fs.writeFileSync('./db/db.json', JSON.stringify(noteCheck));
+        
+        console.log("Succesfully delete note");
+
+        res.json(noteCheck);
     });
-}
+};

@@ -9,7 +9,16 @@
   "author": "Kenneth Petiote",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "node": "^14.2.0"
-  }
+    "express": "^4.17.1",
+    "node": "^14.2.0",
+    "uuid": "^8.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpetiote/note-taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kpetiote/note-taker/issues"
+  },
+  "homepage": "https://github.com/kpetiote/note-taker#readme"
 }
