@@ -8,9 +8,8 @@
 
 
 ## License
+![License Badge](https://img.shields.io/github/license/kpetiote/note-taker)
 ![Top Language](https://img.shields.io/github/languages/top/kpetiote/note-taker)
-https://img.shields.io/github/license/kpetiote/note-taker?style=plastic
-image:https://img.shields.io/github/license/kpetiote/note-taker?style=plastic[GitHub]
 
 ## Description
 The purpose of this application is to allow users to save notes.
