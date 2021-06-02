@@ -6,7 +6,7 @@ Upon refreshing the page, the recent saved notes will be there and users can cli
 
 
 # Website Demo
-![Alt text](.\public\assets\images\note-taker-website.gif "Note-Taker")
+![Alt text](./public/assets/images/note-taker-website.gif "Note-Taker")
  
 # Technologies Used
 - CSS
