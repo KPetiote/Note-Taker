@@ -1,10 +1,15 @@
 # Note-Taker
 ## Table of Contents
+  * [License](#license)
   * [Description](#description)
   * [Website-Demo](#website-demo)
   * [Technologies](#technologies)
   * [Links](#links)
-  * [License](#license)
+
+
+## License
+https://img.shields.io/github/license/kpetiote/note-taker?style=plastic
+image:https://img.shields.io/github/license/kpetiote/note-taker?style=plastic[GitHub]
 
 ## Description
 The purpose of this application is to allow users to save notes.
