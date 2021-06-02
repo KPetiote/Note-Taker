@@ -13,8 +13,8 @@
 
 ## Description
 The purpose of this application is to allow users to save notes.
-Users are allowed to get the application started and save their notes in columns.
-Upon first loading the page 2 fiels will be availabe to input a title and the text for the note.
+Upon first loading the page, 2 fields will be availabe to input a title and the text for the note.
+Users are allowed to save their notes in columns, and select back to read them over.
 Upon refreshing the page, the recent saved notes will be there and users can click to delete them.
 
 ## Demo
