@@ -1,4 +1,5 @@
 # Note-Taker
+
 ## Table of Contents
   * [License](#license)
   * [Description](#description)
@@ -6,9 +7,7 @@
   * [Technologies](#technologies)
   * [Links](#links)
 
-
 ## License
-![License Badge](https://img.shields.io/github/license/kpetiote/note-taker)
 ![Top Language](https://img.shields.io/github/languages/top/kpetiote/note-taker)
 
 ## Description
