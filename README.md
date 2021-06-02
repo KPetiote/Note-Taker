@@ -1,13 +1,13 @@
 # Note-Taker
 
 ## Table of Contents
-  * [License](#license)
+  * [Top Language](#top-language)
   * [Description](#description)
   * [Demo](#demo)
   * [Technologies](#technologies)
   * [Links](#links)
 
-## License
+## Top Language
 ![Top Language](https://img.shields.io/github/languages/top/kpetiote/note-taker)
 
 ## Description
